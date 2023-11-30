@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <html>
+
+    <head>
+
+        <script type="text/javascript">
+            const zoomIn = (image) => {
+                image.style.width = '400px'
+                image.style.height = '250px'
+            }
+            const zoomOut = (image) => {
+                image.style.width = '300px'
+                image.style.height = '200px'
+            }
+        </script>
+
+    </head>
+
+    <body>
+
+        <div>
+
+            <div>
+
+                <img src="image1.jpg" width="284" height="178" border="0" alt="" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+                <img src="image4.jpg" width="284" height="178" border="0" alt="" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

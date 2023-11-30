@@ -1,0 +1,21 @@
+{
+    "books": [{
+            "id": 1,
+            "title": "Java",
+            "author": "James",
+            "price": "9000.00"
+        },
+        {
+            "id": 2,
+            "title": "Micro Services",
+            "author": "Sam Newman",
+            "price": 7567.888
+        },
+        {
+            "id": 3,
+            "title": "AWS",
+            "author": "Andreas",
+            "price": 4597.888
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mouse Pointer X & Y Coordinates </title>
+
+</head>
+
+<body onmousemove="showCords(event)">
+
+    <h2>Mouse Pointer X & Y Coordinates</h2>
+
+    <br/><br/<br/>
+
+    <font id="demo" color="blue" size="4">
+
+    </font>
+
+    <script>
+        function showCords(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            var coor = " Mouse Pointer : X  coords: \n" + x + "\n" + "\n, Mouse Pointer :Y coords: " + y;
+            document.getElementById("demo").innerHTML = coor;
+        }
+    </script>
+
+</body>
+
+</html>

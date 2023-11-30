@@ -1,0 +1,38 @@
+
+C:\Users\Samiksha>node -v
+v20.9.0
+
+C:\Users\Samiksha>npm -v
+10.1.0
+
+C:\Users\Samiksha>npm i -g json-server
+
+added 116 packages in 8s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+  C:\Users\Samiksha\Desktop> json-server --watch db.json
+
+  \{^_^}/ hi!
+
+  Loading db.json
+  Oops, db.json doesn't seem to exist
+  Creating db.json with some default data
+
+  Done
+
+  Resources
+  http://localhost:3000/posts
+  http://localhost:3000/comments
+  http://localhost:3000/profile
+
+  Home
+  http://localhost:3000
+
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+
+
+s
+  Saved snapshot to db-1698382144790.json

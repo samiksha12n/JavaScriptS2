@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Validation</title>
+</head>
+
+<body>
+    <script src="scripts.js"></script>
+    <form name="myForm" action="../action.html" onsubmit="return validateForm()"></form>
+    <h3>Registration Form</h3>
+    Title : <select id="title">
+        <option>Mr.</option>
+        <option>Mrs.</option>
+        <option>Ms.</option>
+        <option>Miss.</option>
+    </select> First Name : <input type="text" name="firstname" id="fname" required><label id="fnameLabel"></label> Last Name : <input type="text" name="lastname" id="lname" required><br>
+    <br> Email : <input type="text" name="email" id="emai" required>
+    <br>Mobile : <input type="text" name="mobile" id="mobile" required>
+    <br> Password: <input type="password" name="password" id="password" required> Confirm Password: <input type="password" name="confirmpassword" id="cpassword" required><br>
+    <input type="checkbox" name="checkbox" id="check" required> Accept Terms & Conditions <br>
+    <input type="submit" name="register">
+    <input type="reset" name="reset">
+</body>
+
+</html>

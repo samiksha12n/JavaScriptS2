@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<head>
+
+    <style>
+        #div1 {
+            width: 750px;
+            height: 180px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+
+    <script>
+        function dragStart(event) {
+            event.dataTransfer.setData("image", event.target.id);
+            document.getElementById("drag1").innerHTML = "Dragging started";
+        }
+
+        function dragEnd(event) {
+            document.getElementById("drag1").innerHTML = "Dragging ended.";
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const image1 = event.dataTransfer.getData("image");
+            event.target.appendChild(document.getElementById(data));
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Drag & Drop Example using HTML5 & Java Script</h2>
+
+    <img id="drag1" src="image1.jpg" ondragstart="drag(event)" width="150" height="150">
+
+    <img id="drag2" src="image2.jpg" ondragstart="drag(event)" width="150" height="150">
+
+    <img id="drag3" src="image3.jpg" ondragstart="drag(event)" width="150" height="150">
+
+    <img id="drag3" src="image4.jpg" ondragstart="drag(event)" width="150" height="150">
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        Drag Images here
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book CRUD Operations</title>
+    <script>
+        function sendHttpRequest(method, url, data, callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    callback(xhr.responseText);
+                } else {
+                    console.error('Request failed with status:', xhr.status);
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Request failed');
+            };
+            const jsonData = JSON.stringify(data);
+            xhr.send(jsonData);
+        }
+
+        function loadBooks() {
+            sendHttpRequest('GET', 'http://localhost:3000/books', null, function(response) {
+                const books = JSON.parse(response);
+                displayBooks(books);
+            });
+        }
+
+        function displayBooks(books) {
+            const bookTable = document.getElementById('book-table');
+            bookTable.innerHTML = '';
+
+            books.forEach(function(book) {
+                const row = bookTable.insertRow();
+                row.insertCell(0).textContent = book.id; // Display Book ID
+                row.insertCell(1).textContent = book.title;
+                row.insertCell(2).textContent = book.author;
+                row.insertCell(3).textContent = book.price;
+
+                const editCell = row.insertCell(4);
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.onclick = function() {
+                    editBook(book);
+                };
+                editCell.appendChild(editButton);
+
+                const deleteCell = row.insertCell(5);
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    deleteBook(book.id);
+                };
+                deleteCell.appendChild(deleteButton);
+            });
+        }
+
+        function deleteBook(bookId) {
+            console.log('Deleting book with ID:', bookId);
+            sendHttpRequest('DELETE', `http://localhost:3000/books/${bookId}`, null, function(response) {
+                loadBooks();
+            });
+        }
+
+        function editBook(book) {
+            const newTitle = prompt('Enter the new title:', book.title);
+            const newAuthor = prompt('Enter the new author:', book.author);
+            const newPrice = parseFloat(prompt('Enter the new price:', book.price));
+
+            const updatedBook = {
+                title: newTitle,
+                author: newAuthor,
+                price: newPrice
+            };
+
+            sendHttpRequest('PUT', `http://localhost:3000/books/${book.id}`, updatedBook, function() {
+                loadBooks();
+            });
+        }
+
+        function addBook() {
+            const title = prompt('Enter the title:');
+            const author = prompt('Enter the author:');
+            const price = parseFloat(prompt('Enter the price:'));
+
+            const newBook = {
+                title,
+                author,
+                price
+            };
+
+            sendHttpRequest('POST', 'http://localhost:3000/books', newBook, function() {
+                loadBooks();
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Book CRUD Operations</h1>
+    <button onclick="loadBooks()">Load All Books</button>
+    <button onclick="addBook()">Add New Book</button>
+    <table id="book-table" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </table>
+</body>
+
+</html>

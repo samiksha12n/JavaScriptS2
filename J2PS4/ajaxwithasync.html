@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+
+    <title>AJAX Application To Load the Data From Server using async and await</title>
+
+    <script>
+        const loadData = () => {
+            fetch("https://jsonplaceholder.typicode.com/users")
+                .then((response) => response.json())
+                .then((res) => {
+                    document.getElementById("demo");
+
+
+                });
+        }
+
+        function loadData() {
+            var xmlRequest = new XMLHttpRequest();
+            xmlRequest.open("GET", "https://jsonplaceholder.typicode.com/users");
+
+            console.log(xmlRequest.response);
+            document.write(xmlRequest.response);
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h3>AJAX Application To Load the Data From Server using async and await</h3>
+
+        <div id="demo">
+
+            <input type="button" class="btn btn-info" onclick="loadData()" value="Load Data" />
+
+        </div>
+
+        <br/><br/>
+
+        <div>
+
+            <ol id="demo">
+
+            </ol>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

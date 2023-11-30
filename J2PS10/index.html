@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <html lang="en">
+
+    <head>
+
+        <title>HTML List Binding -ES6 classes</title>
+
+    </head>
+
+    <body>
+        <script>
+            class ListBinding {
+
+                constructor(element) {
+
+                    this.listElement = element;
+
+                    this.courseList = [];
+
+                }
+
+                update() {
+
+                    while (this.listElement.firstChild)
+
+                        this.listElement.removeChild(this.listElement.firstChild);
+
+                    //fill <ol> or <ul> tag with li
+
+                    for (const course of this.courseList)
+
+                        this.listElement.appendChild(ListBinding.createListItem(course));
+
+                }
+
+                /* create a <li></li> element tag */
+
+                static createListItem(text) {
+
+                    const li = document.createElement("li");
+
+                    li.textContent = text;
+
+                    return li;
+
+                }
+
+                add(course) {
+
+                    this.courseList.push(course);
+
+                    this.update();
+
+                }
+
+            }
+        </script>
+
+        <h2>ES6 classes :HTML List Binding</h2>
+
+        <ul id="courseList">
+
+            <!-- To be filled by JS-->
+
+        </ul>
+
+        <script src="listbinding.js">
+        </script>
+
+        <script>
+            const courseList = document.getElementById("courseList");
+
+            const listbinding = new ListBinding(courseList);
+
+            listbinding.add("Java");
+
+            listbinding.add("MicroService");
+
+            listbinding.add("Cloud Computing");
+        </script>
+
+    </body>
+
+    </html>
